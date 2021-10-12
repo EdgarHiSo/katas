@@ -7,7 +7,7 @@ let str1 = "hola"; let str2 = "olah"
 function isAnag(str1, str2) {
     return sortStr(str1) === sortStr(str2)
 }
-let array = ["dell", "ledl", "abc", "cba", "bca", "bac"]
+let array = ["dell", "ledl", "abc", "cba"]
 function countAnag(array) {
     let count = 0;
     for (let i = 0; i < array.length -1; i++) {

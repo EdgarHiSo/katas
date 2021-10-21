@@ -1,52 +1,20 @@
-function validParens(parens) {
-    let map = { ")": "(", "}": "{", "]": "[" }
-    let stack = []
-    for (let paren of parens) {
-        if (!map[paren]) {
-            stack.push(paren)
-        }
-        else if (stack.pop() !== map[paren]) {
-            return false
-        }
-    }
-    return stack.length == 0
+function sortWord(str) {
+    return str.split("").sort().join("")
 }
-
-function decoderRoman(number) {
-    let map = { 
-        M: 1000, CM: 900, D: 500, CD: 400, C: 100, XC: 90,
-        L: 50, XL: 40, X: 100, IX: 9, V: 5, IV: 4, I: 1 }
-    let output = ""
-    for (let i in map) {
-        while (number >= map[i]) {
-            number -= map[i]
-            output += i
-        }
-    }
-    return output
+function isAnagram(str1, str2) {
+    return sortWord(str1) === sortWord(str2)
 }
-console.log(decoderRoman(95))
+let array = ["dell", "ledl", "abc", "cba", "abc", "cba"]
 
-function fromRomanToNumber(roman) {
-    let map = { M: 1000, CM: 900, D: 500, CD: 400, C: 100, XC: 90, L: 50, XL: 40, X: 100, IX: 9, V: 5, IV: 4, I: 1 }
-    let chars = roman.split("")
-    let count = 0
-    let i = 0;
-    while (i < chars.length) {
-        let char = chars[i]
-        if (i < chars.length - 1) {
-            let next = chars[i + 1] 
-            if (char + next in map) {
-                count += map[char + next];
-                i += 2
-            } else {
-                count += map[char]
-                i++
+function countAnagrams(array) {
+    let count = 0;
+    for (let i = 0; i < array.length - 1; i++) {
+        for (let j = i + 1; j < array.length; j++) {
+            if (isAnagram(array[i], array[j])) {
+                count++
             }
-        } else {
-            count += map[char];
-            i++
         }
     }
     return count
- }
+}
+console.log(countAnagrams(array))

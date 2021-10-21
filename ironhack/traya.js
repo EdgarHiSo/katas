@@ -1,26 +1,21 @@
-let arrayNames = [["Pablo", "Enrique", "Josh", "Juan", "Gonzalo"], ["Michael", "Alexander", "Mikel", "Ariel"], ["John", "Julia", "Brad", "George"]]
+var list1 = [
+    { firstName: 'Noah', lastName: 'M.', country: 'Switzerland', continent: 'Europe', age: 19, language: 'JavaScript' },
+    { firstName: 'Maia', lastName: 'S.', country: 'Tahiti', continent: 'Oceania', age: 28, language: 'JavaScript' },
+    { firstName: 'Shufen', lastName: 'L.', country: 'Taiwan', continent: 'Asia', age: 35, language: 'HTML' },
+    { firstName: 'Sumayah', lastName: 'M.', country: 'Tajikistan', continent: 'Asia', age: 30, language: 'CSS' }
+];
 
-function flattenArray(arrayNames) {
-    let newArray = [];
-    for (let subarray of arrayNames) {
-        for (let elm of subarray) {
-            newArray.push(elm)
-        }
-    }
-    return newArray
-}
-
-function sortArray(arrayNames) {
-    let arrNamesNew = flattenArray(arrayNames)
-    return arrNamesNew.sort((name1, name2) => {
-        if (name1.lenght > name2.lenght) {
-            return 1
-        } else if (name2.lenght > name1.lenght) {
-            return -1
+function filter(list1) {
+    return list1.map(elm => elm.language)
+   /* return list1.map(elm => elm.language)
+    .reduce((count, languages) => {
+        if (count[languages] == null) {
+            count[languages] = 1
         } else {
-            return name1.toString().localeCompare(name2.toString())
+            count[languages]++
         }
-    })
+        return count
+    }, {}) */
 }
 
-console.log(sortArray(arrayNames))
+console.log(filter(list1))

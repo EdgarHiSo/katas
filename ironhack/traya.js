@@ -1,21 +1,24 @@
-var list1 = [
-    { firstName: 'Noah', lastName: 'M.', country: 'Switzerland', continent: 'Europe', age: 19, language: 'JavaScript' },
-    { firstName: 'Maia', lastName: 'S.', country: 'Tahiti', continent: 'Oceania', age: 28, language: 'JavaScript' },
-    { firstName: 'Shufen', lastName: 'L.', country: 'Taiwan', continent: 'Asia', age: 35, language: 'HTML' },
-    { firstName: 'Sumayah', lastName: 'M.', country: 'Tajikistan', continent: 'Asia', age: 30, language: 'CSS' }
-];
-
-function filter(list1) {
-    return list1.map(elm => elm.language)
-   /* return list1.map(elm => elm.language)
-    .reduce((count, languages) => {
-        if (count[languages] == null) {
-            count[languages] = 1
+function decoderNumber(roman) {
+    let map = { M: 1000, CM: 900, D: 500, CD: 400, C: 100, XC: 90, L: 50, XL: 40, X: 10, IX: 9, V: 5, IV: 4, I: 1 }
+    let chars = roman.split("")
+    let number = 0;
+    let i = 0;
+    while (i < chars.length) {
+        let char = chars[i]
+        if (i < chars.length - 1) {
+            let next = chars[i + 1]
+            if (char + next in map) {
+                number += map[char + next]
+                i += 2
+            } else {
+                number += map[char]
+                i++
+            }
         } else {
-            count[languages]++
+            number += map[char]
+            i++
         }
-        return count
-    }, {}) */
+    }
+    return number
 }
-
-console.log(filter(list1))
+console.log(decoderNumber("LXXX"))

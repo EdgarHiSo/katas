@@ -19,9 +19,9 @@ function groupAnagrams(words) {
                     list.push(words[j])
                 }
             }
+            lists.push(list)
+            representatives.push(representative)
         }
-        lists.push(list)
-        representatives.push(representative)
     }
     return lists
 }

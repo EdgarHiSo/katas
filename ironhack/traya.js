@@ -8,7 +8,7 @@ function isAnagram(str1, str2) {
 }
 
 function groupAnagrams(words) {
-    const lists = [];
+    const lists = []
     const representatives = []
     for (let i = 0; i < words.length; i++) {
         const representative = sortWord(words[i])
@@ -19,9 +19,9 @@ function groupAnagrams(words) {
                     list.push(words[j])
                 }
             }
+            lists.push(list);
+            representatives.push(representative)
         }
-        lists.push(list)
-        representatives.push(representative)
     }
     return lists
 }

@@ -1,21 +1,25 @@
 let words = ["tsar", "rat", "tar", "star", "tars", "cheese"]
 
-function sortWords(str) {
-    return str.split("").sort().join("")
-}
 function isAnagram(str1, str2) {
-    return sortWords(str1) === sortWords(str2)
+    return str1.split("").sort().join("") === str2.split("").sort().join("")
 }
+
 function groupAnagrams(words) {
-   let result = {};
-   for (let word of words) {
-       let cleansed = word.split("").sort().join("")
-       if (result[cleansed]) {
-           result[cleansed].push(word)
-       } else {
-           result[cleansed] = [word]
-       }
-   }
-   return Object.values(result)
+    const lists = []
+    const representatives = []
+    for (let i = 0; i < words.length; i++) {
+        const representative = words[i].split("").sort().join("")
+        if (!representatives.includes(representative)) {
+            const list = [words[i]]
+            for (let j = i + 1; j < words.length; j++) {
+                if (isAnagram(words[j], representative)) {
+                    list.push(words[j])
+                }
+            }
+            lists.push(list)
+            representatives.push(representative)
+        }
+    }
+    return lists
 }
 console.log(groupAnagrams(words))

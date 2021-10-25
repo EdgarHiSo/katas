@@ -25,4 +25,14 @@ function groupAnagrams(words) {
     }
     return lists
 }
-console.log(groupAnagrams(words))
+
+function isPrim(number) {
+    for (let i = 2; i < number; i++) {
+        if (number % i === 0) {
+            return false
+        } 
+    }
+    return true
+}
+
+console.log(isPrim(9))

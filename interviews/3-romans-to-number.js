@@ -6,7 +6,6 @@ function fromRoman(roman) {
     let chars = roman.split("")
     let count = 0
     let i = 0
-    
     while (i < chars.length) {
         let char = chars[i];
         if (i < chars.length - 1) {

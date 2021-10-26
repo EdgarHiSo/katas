@@ -3,14 +3,14 @@
     let stack = []
     for (let paren of parens) {
        if (!map[paren]) {
-            stack.push(paren)
+           stack.push(paren)
         } else if (stack.pop() !== map[paren]) {
             return false
         }
     }
     return stack.length == 0
 }
-
+console.log(validParens("("))
 function encoder(number) {
     let map = { M: 1000, CM: 900, D: 500, CD: 400, C: 100, XC: 90, L: 50, XL: 40, X: 10, IX: 9, V: 5, IV: 4, I:1 }
     let output = "";
@@ -58,4 +58,37 @@ function isPrim(num) {
     }
     return true
 }
-console.log(isPrim(4))
+let array = [1,3,5]
+function twoSum(array, target) {
+    for (let i = 0; i < array.length; i++) {
+        for (let j = i +1; i < array.length; j++) {
+            if (array[i] + array[j] === target) {
+                return [i, j]
+            }
+        }
+    }
+}
+let arrayNames = [["Pablo", "Enrique", "Josh", "Juan", "Gonzalo"], ["Michael", "Alexander", "Mikel", "Ariel"], ["John", "Julia", "Brad", "George"]]
+
+function flatten(arrayNames) {
+    let newArr = []
+    for (let subarray of arrayNames) {
+        for (let name of subarray) {
+            newArr.push(name)
+        }
+    }
+    return newArr
+}
+
+function sortArray(arrayNames) {
+    let arrNames = flatten(arrayNames)
+    return arrNames.sort((name1, name2) => {
+        if (name1.length > name2.length) {
+            return 1
+        } else if (name2.length > name1.length) {
+            return -1
+        } 
+        return name1.localeCompare(name2)
+    })
+}
+console.log(sortArray(arrayNames))

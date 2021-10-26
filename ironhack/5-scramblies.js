@@ -1,9 +1,10 @@
-//Complete the function scramble(str1, str2) that returns true if a portion of str1 characters can be rearranged to match str2, otherwise returns false.
-function decoder(roman) {
-    let map = {
-        M: 1000, CM: 900, D: 500, CD: 400, C: 100, XC: 90,
-        L: 50, XL: 40, X: 10, IX: 9, V: 5, IV: 4, I: 1,
-    };
-    
+// Crea un mapa M de letras de str2 a veces que aparece esa letra
+// Iteras todas las letras de str1, y si esta en el mapa M, le restas uno (warning: fijate en 0)
+// Al final, checkea que M es todos 0
+
+function scramble(str2) {
+    let mapM = {}
+     str2.split("").forEach(elm => mapM.push(elm))
+     return mapM
 }
-console.log(decoder("XXIII"))
+console.log(scramble("world"))

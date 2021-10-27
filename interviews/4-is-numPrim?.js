@@ -1,9 +1,8 @@
 function isPrim(number) {
-   for (let i = 2; i < number; i++) {
-       if (number % 2 === 0) {
-           return false
-       }
-   }
-   return number > 1
+    if (number <= 1) return false
+    for (let i = 2; i < Math.sqrt(number); i++) {
+        if (number % i === 0) { return false }
+    }
+    return true
 }
-console.log(isPrim(9))
+console.log(isPrim(5))

@@ -49,7 +49,7 @@ let list1 = [
 let number = 34;
 
 function removeLastNumber(number) {
-    return Math.floor(number / 10 )
+    return Math.floor(number / 10)
 }
 function isConsecutive(list1) {
     const seen = [...Array(10)].map(i => false)
@@ -63,4 +63,22 @@ function isConsecutive(list1) {
 
 function isAgeDiverse(list) {
     return ["Americas", "Europe", "Asia", "African"]
-  }
+}
+
+
+let array = [7, 8, 6, 5, 6, 7, 9, 2, 3, 4, 3, 2, 9, 9]
+//{3: 2, 4: 1, 5: 1, 6: 2, ...}
+
+
+
+function getNotes(array) {
+    return array.reduce((total, notes) => {
+        if (total[notes] == null) {
+            total[notes] = 1
+        } else {
+            total[notes]++
+        }
+        return total
+    }, {})
+}
+console.log(getNotes(array))

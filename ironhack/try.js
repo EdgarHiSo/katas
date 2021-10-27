@@ -111,9 +111,5 @@ function scramblie(str1, str2) {
 }
 
 
-function scramble(str1, str2) {
-    let occurences = str1.split("").reduce((arr, cur) => { arr[cur] ? arr[cur]++ : arr[cur] = 1; return arr; }, {});
-    console.log(occurences)
-     str2.split("").every((character) => --occurences[character] >= 0);
-  }
+
 console.log(scramble(str1, str2))

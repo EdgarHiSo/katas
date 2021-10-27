@@ -55,4 +55,65 @@ function isPrim(number) {
     }
     return true
 }
-console.log(isPrim(5))
+function twoSum(array, target) {
+    let indexes = [];
+    for (let i = 0; i < array.length; i++) {
+        for (let j = i + 1; j < array.length; j++) {
+            if (array[i] + array[j] === target) {
+                indexes.push(i); indexes.push(j)
+            }
+        }
+    }
+    return indexes
+}
+let words = ["tsar", "rat", "tar", "star", "tars", "cheese"]
+function sortWord(str) {
+    return str.split("").sort().join("")
+}
+function isAnagram(str1, str2) {
+    return sortWord(str1) === sortWord(str2)
+}
+function countAnagram(words) {
+    const lists = [];
+    const representatives = [];
+    for (let i = 0; i < words.length; i++) {
+        const representative = sortWord(words[i])
+        if (!representatives.includes(representative)) {
+            const list = [words[i]]
+            for (let j = i + 1; j < words.length; j++) {
+                if (isAnagram(words[i], words[j])) {
+                    list.push(words[j])
+                }
+            }
+            lists.push(list);
+            representatives.push(representative)
+        }
+    }
+    return lists
+}
+str1 = "wwwordlhdgfihg"
+str2 = "wordl"
+function scramblie(str1, str2) {
+    let map = {};
+    str2.split("").forEach(letter => {
+        if (letter in map) {
+            map[letter]++
+        } else {
+            map[letter] = 1
+        }
+    })
+    str1.split("").forEach(letter => {
+        if (letter in map) {
+            map[letter]--
+        }
+    })
+    return Object.values(map).every(elm => elm <= 0)
+}
+
+
+function scramble(str1, str2) {
+    let occurences = str1.split("").reduce((arr, cur) => { arr[cur] ? arr[cur]++ : arr[cur] = 1; return arr; }, {});
+    console.log(occurences)
+     str2.split("").every((character) => --occurences[character] >= 0);
+  }
+console.log(scramble(str1, str2))

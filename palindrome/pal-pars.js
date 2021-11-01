@@ -4,7 +4,6 @@ function makePalindrome(str) {
 function isPalindrome(str) {
     return makePalindrome(str) === str
 }
-
 function palindromePars(arr) {
     let result = []
     for (let i = 0; i < arr.length; i++) {

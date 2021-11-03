@@ -13,12 +13,21 @@ function getCoins(cents) {
 }
 
 function jeje(cents) {
-    let arrayCoins = [200, 100, 50, 20, 10, 5, 2, 1];
-    return arrayCoins.reduce((total, coin) => {
+    let arrCoins = [200, 100, 50, 20, 10, 5, 2, 1]
+    return arrCoins.reduce((total, coin) => {
         let qty = Math.floor(cents / coin)
         total[coin] = qty
         cents -= qty * coin
         return total
     }, {})
 }
-console.log(jeje(900))
+function filter(obj) {
+    let res = {};
+    for (let coin in obj) {
+        if (obj[coin] > 0) {
+            res[coin] = obj[coin]
+        }
+    }
+    return res
+}
+console.log(filter(jeje(400)))

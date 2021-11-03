@@ -1,44 +1,24 @@
-// N = 6, array = [2, 4, 5, 8, 10] --> 5
-
-function getClosest(N, array) {
-    closest = Number.MIN_VALUE
-    for (let element of array) {
-        if (N - element < N - closest && element <= N) {
-            closest = element
-        }
-    }
-    return closest
+let array = [1, 2, 3, 4, 5, 6]
+function getClosest(array, target) {
+    return array.reduce((prev, curr) => (target - curr) < (target - prev) && curr <= target && target !== curr ? curr : prev, Number.MIN_VALUE)
 }
-
-
-function howManyCoins(N) {
-    let mapCoins = { 200: 0, 100: 0, 50: 0, 20: 0, 10: 0, 5: 0, 2: 0, 1: 0 };
-
+function getCoins(cents) {
+    let mapCoin = { 200: 0, 100: 0, 50: 0, 20: 0, 10: 0, 5: 0, 2: 0, 1: 0 };
     do {
-        M = getClosest(N, Object.keys(mapCoins))
-        mapCoins[M]++
-        N = N - M
-    } while (N != 0)
-
-    return mapCoins
-
+        M = getClosest(Object.keys(mapCoin), cents)
+        mapCoin[M]++
+        cents -= M
+    } while (cents != 0)
+    return mapCoin
 }
 
-console.log(howManyCoins(12))
-
-/* Step 1: coge la mayor moneda M sin pasarme
-Step 2: aumento en 1 mapcoins[M]
-Step 3: Repito los pasos 1 y 2 con N - M hasta que N == M */
-
-
-/* 12
-[1, 2, 5]
-
-Paso 1: Cojo la mayor moneda que no supere 12: cojo 5.
-Paso 2: Resto 12 - 5 = 7, e incremento por 1 las veces que he visto la moneda 5.
-Paso 3: Cojo la mayor moneda que no supere 7: cojo 5.
-Paso 4: Resto 7 - 5 = 2, e incremento por 1 las veces que he visto l amoneda 5.
-Paso 5: Cojo la mayor moneda que no supere 2: cojo 2.
-Paso 6: Resto 2 - 2 = 0, e incremeneto por 1 las veces que he visto la moneda 2.
-Paso 7: Hemos visto, 0, paramos. */
-
+function jeje(cents) {
+    let arrayCoins = [200, 100, 50, 20, 10, 5, 2, 1];
+    return arrayCoins.reduce((total, coin) => {
+        let qty = Math.floor(cents / coin)
+        total[coin] = qty
+        cents -= qty * coin
+        return total
+    }, {})
+}
+console.log(jeje(900))

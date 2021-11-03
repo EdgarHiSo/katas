@@ -85,3 +85,71 @@ function countAnagr(words) {
     }
     return count
 }
+function groupAnagrams(words) {
+    const representatives = [];
+    const lists = []
+    for (let i = 0; i < words.length; i++) {
+        const representative = sortWord(words[i])
+        if (!representatives.includes(representative)) {
+            const list = [words[i]]
+            for (let j = i + 1; j < words.length; j++) {
+                if (isAnagram(representative, words[j])) {
+                    list.push(words[j])
+                }
+            }
+            lists.push(list);
+            representatives.push(representative)
+        }
+    }
+    return lists
+}
+let str1 = "words"; let str2 = "wordsoiuyfyfrds"
+
+function scramblies(str1, str2) {
+    let map = {};
+    str2.split("").forEach(letter => {
+        if (letter in map) {
+            map[letter]++
+        } else {
+            map[letter] = 1
+        }
+    })
+    str1.split("").forEach(letter => {
+        if (letter in map) {
+            map[letter]--
+        }
+    })
+    return Object.values(map).every(elm => elm <= 0)
+}
+
+function getCoins(cents) {
+    let arrCoins = [200, 100, 50, 20, 10, 5, 2, 1];
+    return arrCoins.reduce((total, coin) => {
+        let qty = Math.floor(cents / coin)
+        total[coin] = qty
+        cents -= qty * coin 
+        return filterObj(total)
+    }, {})
+}
+function filterObj(obj) {
+    let result = {}
+    for (let coin in obj) {
+        if (obj[coin] > 0) {
+            result[coin] = obj[coin]
+        }
+    }
+    return result
+}
+function getClosest(array, target) {
+    return array.reduce((prev, curr) => (target - curr) < (target - prev) && curr <= target && curr !== target ? curr : prev, Number.MIN_VALUE)
+}
+function getCoins(cents) {
+    let mapCoin = {200: 0, 100: 0, 50: 0, 20: 0, 10: 0, 5: 0, 2: 0, 1: 0}
+    do {
+        M = getClosest(Object.keys(mapCoin), cents)
+        mapCoin[M]++
+        cents -= M
+    } while(cents != 0)
+    return filterObj(mapCoin)
+}
+console.log(getCoins(4))

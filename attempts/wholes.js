@@ -127,7 +127,7 @@ function getCoins(cents) {
     return arrCoins.reduce((total, coin) => {
         let qty = Math.floor(cents / coin)
         total[coin] = qty
-        cents -= qty * coin 
+        cents -= qty * coin
         return filterObj(total)
     }, {})
 }
@@ -144,12 +144,32 @@ function getClosest(array, target) {
     return array.reduce((prev, curr) => (target - curr) < (target - prev) && curr <= target && curr !== target ? curr : prev, Number.MIN_VALUE)
 }
 function getCoins(cents) {
-    let mapCoin = {200: 0, 100: 0, 50: 0, 20: 0, 10: 0, 5: 0, 2: 0, 1: 0}
+    let mapCoin = { 200: 0, 100: 0, 50: 0, 20: 0, 10: 0, 5: 0, 2: 0, 1: 0 }
     do {
         M = getClosest(Object.keys(mapCoin), cents)
         mapCoin[M]++
         cents -= M
-    } while(cents != 0)
+    } while (cents != 0)
     return filterObj(mapCoin)
 }
 console.log(getCoins(4))
+
+function getCoins(cents) {
+    let arrCoins = [200, 100, 50, 20, 10, 5, 2, 1];
+    return arrCoins.reduce((total, coin) => {
+        let qty = Math.floor(cents / coin)
+        total[coin] = qty
+        cents -= qty * coin
+        return total
+    }, {})
+}
+function filterObj(obj) {
+    let result = {};
+    for (let key in obj) {
+        if (obj[key] > 0) {
+            result[key] = obj[key]
+        }
+    }
+    return result
+}
+console.log(filterObj(getCoins(12567)), "ey")

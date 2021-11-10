@@ -24,6 +24,13 @@ function groupAnagrams(words) {
    }
    return lists
 }
+
+
+
+
+
+
+
 function countAnagrams(words) {
     let count = 0; 
     for (let i = 0; i < words.length - 1; i++) {

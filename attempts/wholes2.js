@@ -144,18 +144,32 @@ function getDuplicates(things) {
     })
     return duplicates
 }
+let arrayNum = [1,4,6,7]
+function twoSum(arrayNum, target) {
+    let numberToResult = [];
+    
+}
 
-let things = [1, 4, 6, "arr", 56, 2, "arr", 4, 1]
-
-function getDuplicates(things) {
-    const uniqueChars = [];
-    const duplicates = [];
-    things.forEach(elm => {
+/* function getDuplicates(jejes) {
+    let uniqueChars = [];
+    let duplicates = [];
+    for (let elm of jejes) {
         if (!uniqueChars.includes(elm)) {
             uniqueChars.push(elm)
         } else if (uniqueChars.includes(elm)) {
             duplicates.push(elm)
         }
-    })
+    }
     return duplicates
+} */
+
+function getDuplicates(array) {
+    let uniqueChars = [... new Set(array)]
+
+    return uniqueChars
 }
+console.log(getDuplicates([1,2,3,5,1,1, "aarr", "aarr"]))
+
+let jeje = "dirt worm worm dirt dirt worm"
+console.log(jeje.split("dirt").length)
+console.log(typeof(42))

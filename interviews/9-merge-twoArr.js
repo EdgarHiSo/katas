@@ -11,9 +11,10 @@ function mergeArrays(a, b) {
     }
     return arr
 }
+console.log(mergeArrays(["a","b","c","d","e"], [1,2,3,4,5]))
 
 function mergeArrays(array1, array2) {
-    const longest = array1.length > array2.length ? array1: ar2
+    const longest = array1.length > array2.length ? array1: array2
     let newArr = []
     for (let i = 0; i < longest.length; i++) {
         if ( i < array1.length) {

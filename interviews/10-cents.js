@@ -1,6 +1,7 @@
 let array = [1, 2, 3, 4, 5, 6]
 function getClosest(array, target) {
-    return array.reduce((prev, curr) => (target - curr) < (target - prev) && curr <= target && target !== curr ? curr : prev, Number.MIN_VALUE)
+    return array.reduce((prev, curr) => (target - curr) < (target - prev)
+     && curr <= target && target !== curr ? curr : prev, Number.MIN_VALUE)
 }
 function getCoins(cents) {
     let mapCoin = { 200: 0, 100: 0, 50: 0, 20: 0, 10: 0, 5: 0, 2: 0, 1: 0 };
@@ -11,6 +12,7 @@ function getCoins(cents) {
     } while (cents != 0)
     return mapCoin
 }
+console.log(getCoins(1500))
 
 function jeje(cents) {
     let arrCoins = [200, 100, 50, 20, 10, 5, 2, 1]

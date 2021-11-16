@@ -122,7 +122,7 @@ function scramblies(str1, str2) {
 }
 
 function mergeTwoArray(array1, array2) {
-    let longest = array1.length > array2.length ? array1: array2
+    let longest = array1.length > array2.length ? array1 : array2
     let newArr = [];
     for (let i = 0; i < longest.length; i++) {
         if (i < array1.length) {
@@ -134,3 +134,64 @@ function mergeTwoArray(array1, array2) {
     }
     return newArr
 }
+function getClosest(array, target) {
+    return array.reduce((prev, curr) => (target - curr) < (target - prev) && curr <= target ? curr : prev, Number.MIN_VALUE)
+}
+function howCents(cents) {
+    let mapCoin = { 200: 0, 100: 0, 50: 0, 20: 0, 10: 0, 5: 0, 2: 0, 1: 0 };
+    do {
+        M = getClosest(Object.keys(mapCoin), cents)
+        mapCoin[M]++
+        cents -= M
+    } while (cents != 0)
+    return filter(mapCoin)
+}
+function filter(obj) {
+    let result = {};
+    for (let i in obj) {
+        if (obj[i] > 0) {
+            result[i] = obj[i]
+        }
+    }
+    return result
+}
+
+function removeLastNumber(number) {
+    return Math.floor(number / 10)
+}
+let list1 = [
+    { firstName: 'Harry', lastName: 'K.', country: 'Brazil', continent: 'Americas', age: 19, language: 'Python' },
+    { firstName: 'Kseniya', lastName: 'T.', country: 'Belarus', continent: 'Europe', age: 29, language: 'JavaScript' },
+    { firstName: 'Jing', lastName: 'X.', country: 'China', continent: 'Asia', age: 39, language: 'Ruby' },
+    { firstName: 'Noa', lastName: 'A.', country: 'Israel', continent: 'Asia', age: 40, language: 'Ruby' },
+    { firstName: 'Andrei', lastName: 'E.', country: 'Romania', continent: 'Europe', age: 59, language: 'C' },
+    { firstName: 'Maria', lastName: 'S.', country: 'Peru', continent: 'Americas', age: 60, language: 'C' },
+    { firstName: 'Lukas', lastName: 'X.', country: 'Croatia', continent: 'Europe', age: 75, language: 'Python' },
+    { firstName: 'Chloe', lastName: 'K.', country: 'Guernsey', continent: 'Europe', age: 88, language: 'Ruby' },
+    { firstName: 'Viktoria', lastName: 'W.', country: 'Bulgaria', continent: 'Europe', age: 98, language: 'PHP' },
+    { firstName: 'Piotr', lastName: 'B.', country: 'Poland', continent: 'Europe', age: 128, language: 'JavaScript' }
+];
+
+function isDiverse(list1) {
+    const ages = list1.map(elm => elm.age)
+    const seen = [...Array(10)].map(elm => false)
+    for (let number of ages) {
+        const decade = removeLastNumber(Math.min(100, number))
+        seen[decade - 1] = true
+    }
+    return seen.every(elm => elm === true)
+}
+
+function filterDuplicates(array) {
+    let uniqueArr = [];
+    let duplicates = [];
+    for (let elm of array) {
+        if (!uniqueArr.includes(elm)) {
+            uniqueArr.push(elm)
+        } else if (uniqueArr.includes(elm)) {
+            duplicates.push(elm)
+        }
+    }
+    return duplicates
+}
+console.log(filterDuplicates([1,2,3,4,5,6,6,5,4,2]))

@@ -194,4 +194,25 @@ function filterDuplicates(array) {
     }
     return duplicates
 }
-console.log(filterDuplicates([1,2,3,4,5,6,6,5,4,2]))
+let s = "aaaaffffddrrttatlkkkkooo"
+function compress(s) {
+   let ans = ""
+   let i = 0
+    while(i < s.length) {
+        let letter = s[i]
+        let count = 1
+        while(letter == s[i + 1]) {
+            count++
+            i++
+        }
+        ans += letter
+        if (count > 1) {
+            ans += count
+        }
+        i++
+    }
+   return ans
+}
+console.log(compress(s))
+
+

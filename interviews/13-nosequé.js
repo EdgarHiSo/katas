@@ -20,20 +20,20 @@ function getObject(str) {
 }
 
 function getHow(str) {
-   const keys = Object.keys(getObject(str))
-   const values = Object.values(getObject(str))
-   const longest = keys.length > values.length ? keys: values
-   const result = [];
-   
-   for (let i = 0; i < longest.length; i++) {
-       if (i < keys.length) {
-           result.push(keys[i])
-       }
-       if (i < values.length) {
-           result.push(values[i])
-       }
-   }
-   return result.join("")
+    const keys = Object.keys(getObject(str))
+    const values = Object.values(getObject(str))
+    const longest = keys.length > values.length ? keys : values
+    const result = [];
+
+    for (let i = 0; i < longest.length; i++) {
+        if (i < keys.length) {
+            result.push(keys[i])
+        }
+        if (i < values.length) {
+            result.push(values[i])
+        }
+    }
+    return result.join("")
 }
 
 

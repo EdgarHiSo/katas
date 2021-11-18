@@ -196,12 +196,12 @@ function filterDuplicates(array) {
 }
 let s = "aaaaffffddrrttatlkkkkooo"
 function compress(s) {
-   let ans = ""
-   let i = 0
-    while(i < s.length) {
+    let ans = ""
+    let i = 0
+    while (i < s.length) {
         let letter = s[i]
         let count = 1
-        while(letter == s[i + 1]) {
+        while (letter == s[i + 1]) {
             count++
             i++
         }
@@ -211,8 +211,7 @@ function compress(s) {
         }
         i++
     }
-   return ans
+    return ans 
 }
-console.log(compress(s))
 
 

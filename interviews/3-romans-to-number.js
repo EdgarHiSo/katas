@@ -24,4 +24,4 @@ function fromRoman(roman) {
     }
     return count
 }
-console.log(fromRoman("V"))
+console.log(fromRoman("CMIV"))

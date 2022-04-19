@@ -79,8 +79,8 @@ let words = ["tsar", "rat", "tar", "star", "tars", "cheese"]
 
 function countAnag(words) {
     let count = 0;
-    for (let i = 0; i < words.length -1; i++) {
-        for (let j = i + 1;j < words.length; j++) {
+    for (let i = 0; i < words.length - 1; i++) {
+        for (let j = i + 1; j < words.length; j++) {
             if (isAnag(words[i], words[j])) {
                 count++
             }
@@ -90,7 +90,17 @@ function countAnag(words) {
 }
 
 function getClosest(array, target) {
-   return  array.reduce((prev, curr) => (target - curr) < (target - prev) && curr <= target
-    && curr !== target ? curr: prev , Number.MIN_VALUE)
+    return array.reduce((prev, curr) => (target - curr) < (target - prev) && curr <= target && curr !== target ? curr : prev, Number.MIN_VALUE)
 }
-console.log(getClosest([65,78,96,32,22], 90))
+
+function getCoins(cents) {
+    let mapCoins = { 200: 0, 100: 0, 50: 0, 20: 0, 10: 0, 5: 0, 2: 0, 1: 0 };
+
+    do {
+        M = getClosest(Object.keys(mapCoins), cents)
+        mapCoins[M]++
+        cents -= M
+    } while (cents != 0)
+    return mapCoins
+}
+console.log(getCoins(567))

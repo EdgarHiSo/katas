@@ -1,6 +1,6 @@
-function validParens(parens) {
-    let map = { "]": "[", "}": "{", ")": "(" }
-    let stack = []
+function validsParens(parens) {
+    let map = { ")": "(", "}": "{", "]": "[" };
+    let stack = [];
     for (let paren of parens) {
         if (!map[paren]) {
             stack.push(paren)
@@ -16,7 +16,7 @@ function encoder(number) {
     let output = "";
     for (let i in map) {
         while (number >= map[i]) {
-            output += i
+            output += i;
             number -= map[i]
         }
     }
@@ -26,58 +26,23 @@ function encoder(number) {
 function decoder(roman) {
     let map = { M: 1000, CM: 900, D: 500, CD: 400, C: 100, XC: 90, L: 50, XL: 40, X: 10, IX: 9, V: 5, IV: 4, I: 1 };
     let chars = roman.split("")
-    let count = 0
+    let number = 0;
     let i = 0
     while (i < chars.length) {
         let char = chars[i]
-        if (i < chars.length -1) {
+        if (i < chars.length - 1) {
             let next = chars[i + 1]
             if (char + next in map) {
-                count += map[char + next]
                 i += 2
+                number += map[char + next]
             } else {
-                count += map[char]
-                i++
+                i += 1
+                number += map[char]
             }
         } else {
-            count += map[char]
-            i++
+            i += 1
+            number += map[char]
         }
     }
-    return count 
-}
-
-function isPrim(number) {
-    if (number <= 1) return false
-    for (let i = 2; i <= Math.sqrt(number); i++) {
-        if (number % i === 0) {
-            return false
-        }
-    }
-    return true
-}
-
-function sortStr(str) {
-    return str.split("").sort().join("")
-}
-function isAnagram(str1, str2) {
-    return sortStr(str1) === sortStr(str2)
-}
-function countAnagram(array) {
-    let count = 0
-    for (let i = 0; i < array.length - 1; i++) {
-        for (let j = i + 1; j < array.length; j++) {
-            if (isAnagram(array[i], array[j])) {
-                count++
-            }
-        }
-    }
-    return count
-}
-function groupAnagram(array) {
-    const representatives = []
-    const lists = []
-    for (let i = 0; i < array.length; i++) {
-        
-    }
+    return number
 }

@@ -16,3 +16,4 @@ function countAnagr(words) {
     }
     return count
 }
+console.log(countAnagr(words))

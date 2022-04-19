@@ -46,3 +46,51 @@ function decoder(roman) {
     }
     return number
 }
+
+function isPrim(number) {
+    if (number <= 1) return false
+    for (let i = 2; i <= Math.sqrt(number); i++) {
+        if (number % i === 0) {
+            return false
+        }
+    }
+    return true
+}
+
+function twoSum(arr, target) {
+    let idx = [];
+    for (let i = 0; i < arr.length; i++) {
+        for (let j = i + 1; j < arr.length; j++) {
+            if (arr[i] + arr[j] === target) {
+                idx.push(i); idx.push(j)
+            }
+        }
+    }
+    return idx
+}
+
+function sortWord(str) {
+    return str.split("").sort().join("")
+}
+function isAnag(str1, str2) {
+    return sortWord(str1) === sortWord(str2)
+}
+let words = ["tsar", "rat", "tar", "star", "tars", "cheese"]
+
+function countAnag(words) {
+    let count = 0;
+    for (let i = 0; i < words.length -1; i++) {
+        for (let j = i + 1;j < words.length; j++) {
+            if (isAnag(words[i], words[j])) {
+                count++
+            }
+        }
+    }
+    return count
+}
+
+function getClosest(array, target) {
+   return  array.reduce((prev, curr) => (target - curr) < (target - prev) && curr <= target
+    && curr !== target ? curr: prev , Number.MIN_VALUE)
+}
+console.log(getClosest([65,78,96,32,22], 90))
